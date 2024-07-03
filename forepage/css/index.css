@@ -1,0 +1,75 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 200vh;
+    overflow-x: hidden;
+    font-family: Montserrat, sans-serif;
+    background: url("../public/background.png");
+    background-size: cover;
+    text-align: center;
+}
+
+.background {
+    background-size: cover;
+    background-position: 50% 50%;
+    background-clip: text;
+    height: 200vh;
+    font-weight: bold;
+    font-size: 50rem;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    overflow: hidden;
+
+    &:before {
+        content: "";
+        background-image: inherit;
+        background-size: cover;
+        background-position: 50% 50%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -2;
+    }
+}
+
+h1 {
+    letter-spacing: 12px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: #fefefe;
+}
+
+#title{
+    font-size: 185px;
+    background: linear-gradient(to bottom, #85c6d7,#d7f6fc);
+    background-clip: text;
+    margin-top: 500px;
+    -webkit-text-fill-color: transparent;
+}
+
+#dec{
+    background-color: #00000060;
+    width: 1200px;
+    height: 370px;
+    margin: 0 auto ;
+    margin-top: 210px;
+    text-align: center;
+}
+
+#content{
+    display: inline-block;
+    color: white;
+    height: 370px;
+    width: 1150px;
+    font-size: 30px;
+    text-align: left;
+    margin: 2% auto;
+    font-weight: bold;
+}
