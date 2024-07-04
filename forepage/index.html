@@ -8,7 +8,6 @@
         <h1>Generation's<br>Letters</h1>
         <p id="title">阴影检测与去除</p>
         <div id="dec">
-
             <p id="content">欢迎来到阴影检测和消除系统，在本系统，您可以在下方左侧选择想要进行阴影检测和
                             消除的视频，在其右侧可以提供对 MP4，Ogg，WebM三种格式的预览效果，如果您
                             有其他格式的视频文件想要预览，可以在选择文件后仅勾选下方选择配置中输入框并上
@@ -18,6 +17,28 @@
                             在环境较为阴暗时消除效果欠佳，请谨慎使用。更多请点击左下侧“查看视频教程”了
                             解。
             </p>
+        </div>
+        <div id="video">
+            <div class="video_content">
+                <a target="_blank" href="https://www.douyin.com" style=" display: block;margin-top:  4%;  font-size: 20px; color: purple;text-decoration: underline;">查看视频教程</a>
+                <label for="fileinp">
+                    <input type="button" id="btn" value="选择文件"><span  id="text">未选择任何文件</span>
+                    <input type="file" id="fileinp">
+                </label>
+                <p style=" display: block;margin-top:  8%;  font-size: 20px; color: black;">
+                    选择配置
+                    <input class="boxc" type="checkbox" value="input" name="input">输入
+                    <input class="boxc" type="checkbox" value="check" name="check">检测
+                    <input class="boxc" type="checkbox" value="clean" name="clean">消除
+                </p>
+
+                <input type="submit" id="submit" value="上传">
+            </div>
+
+            <div class="video_content">
+                <p style=" display: inline-block; vertical-align:middle; margin-top:  4%;  font-size: 18px; color: black;">视频预览</p>
+                <video id="video_play" src="./public/a.mp4" controls="controls" autoplay="autoplay"></video>
+            </div>
 
         </div>
     </body>

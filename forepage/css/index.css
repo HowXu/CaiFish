@@ -52,6 +52,7 @@ h1 {
     background-clip: text;
     margin-top: 500px;
     -webkit-text-fill-color: transparent;
+    display: none;
 }
 
 #dec{
@@ -61,6 +62,7 @@ h1 {
     margin: 0 auto ;
     margin-top: 210px;
     text-align: center;
+    display: none;
 }
 
 #content{
@@ -72,4 +74,80 @@ h1 {
     text-align: left;
     margin: 2% auto;
     font-weight: bold;
+}
+
+#video{
+    width: 1200px;
+    height: 370px;
+    margin: 0 auto ;
+    margin-top: 150px;
+    overflow: hidden;
+    display: none;
+}
+
+.video_content{
+    background-color: #FFFFFF99;
+    width: 450px;
+    height: 250px;
+    border: 2px solid black;
+    border-radius: 15px 15px 15px 15px;
+    display: inline-block;
+    margin: 1%;
+    vertical-align: middle;
+} 
+
+#fileinp{
+    position: absolute;
+    opacity: 0;
+}
+#btn{
+    height: 29px;
+    border-radius: 12px 0 0 12px;
+    display: inline-block;
+    border: 1px solid ;
+    border-color: black black black black;
+    vertical-align: middle;
+    font-size: 18px;
+    margin-top: 4%;
+}
+#text{
+    background-color: #6495ed;
+    color: black;
+    height: 25px;
+    display: inline-block;
+    width: 250px;
+    text-align: left;
+    border: 1px solid ;
+    border-color: black black black transparent;
+    border-radius: 0 12px 12px 0;
+    vertical-align: middle;
+    font-size: 18px;
+    margin-top: 4%;
+}
+.boxc{
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#submit{
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: 6%;
+    height: 29px;
+    background-color: #6495ed;
+    border: 1px solid ;
+    border-color: black black black black;
+    border-radius: 12px 12px 12px 12px;
+    font-size: 20px;
+}
+
+#video_play{
+    width: 400px;
+    height: 190px;
+    display: block;
+    object-fit: fill;
+    margin: 0 auto;
+    margin-top: -18px;
 }
