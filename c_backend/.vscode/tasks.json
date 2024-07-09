@@ -1,0 +1,47 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "MakeFileBuild",
+			"command": "cmake",
+			"args": [
+				"CMakeLists.txt",
+				"-G",
+				"\"MinGW Makefiles\""
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"detail": "Build MakeFile"
+		},
+		{
+			"type": "cppbuild",
+			"label": "BuildServer",
+			"command": "make",
+			"dependsOrder": "sequence",
+			"dependsOn":["MakeFileBuild"],
+			"args": [
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "Build Binary"
+		},{
+			"type": "shell",
+			"label": "Run",
+			"command": "./build/output.exe",
+			"dependsOrder": "sequence",
+			"dependsOn":["MakeFileBuild","BuildServer"],
+			"args": [
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": false
+			},
+			"detail": "Run Server"
+		}
+	]
+}

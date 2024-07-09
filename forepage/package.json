@@ -1,7 +1,8 @@
 {
   "name": "forepage",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.html",
   "author": "HowXu",
-  "license": "MIT"
+  "license": "MIT",
+  "private": null
 }
