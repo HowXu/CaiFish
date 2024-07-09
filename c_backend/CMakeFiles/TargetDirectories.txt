@@ -1,3 +1,0 @@
-E:/Project/cai/c_backend/CMakeFiles/output.dir
-E:/Project/cai/c_backend/CMakeFiles/edit_cache.dir
-E:/Project/cai/c_backend/CMakeFiles/rebuild_cache.dir
