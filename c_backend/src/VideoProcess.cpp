@@ -40,6 +40,8 @@ void Split(const std::string &src, const std::string &separator, std::vector<std
 	dest.push_back(substring);
 }
 
+
+//这个是核心函数，要改返回值
 void VideoShadowRemove()
 {
 

@@ -99,6 +99,7 @@ h1 {
 #fileinp{
     position: absolute;
     opacity: 0;
+
 }
 #btn{
     height: 29px;
@@ -109,7 +110,9 @@ h1 {
     vertical-align: middle;
     font-size: 18px;
     margin-top: 4%;
+    pointer-events: none;
 }
+
 #text{
     background-color: #6495ed;
     color: black;
