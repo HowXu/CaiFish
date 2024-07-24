@@ -1,5 +1,6 @@
 #include <opencv2/opencv.hpp>
 #include "iostream"
+#include "../include/VideoProcess.h"
 #include "../include/ChromacityShadowDet.h"
 #include "../include/ShadowRemover.h"
 #include "../include/CleanupShadows.h"
@@ -42,13 +43,13 @@ void Split(const std::string &src, const std::string &separator, std::vector<std
 
 
 //这个是核心函数，要改返回值
-void VideoShadowRemove()
+string _VideoShadowRemove(string file_in)
 {
 
 	// cout << "Hello  OpenCV" << endl;
-	string path;
-	cout << "Enter input video filepath with extension:";
-	cin >> path;
+	string path = file_in;
+	//cout << "Enter input video filepath with extension:";
+	//cin >> path;
 	// 根据path创建视频输出对象
 	cv::VideoWriter writer;
 
@@ -79,7 +80,8 @@ void VideoShadowRemove()
 	string outputname = "output_";
 	outputname.append(tmp);
 	//cout << "Step 1A error check" << outputname << endl;
-	writer = VideoWriter(outputname, cv::VideoWriter::fourcc('m','p','4','v'), cap.get(CAP_PROP_FPS), Size(cap.get(CAP_PROP_FRAME_WIDTH), cap.get(CAP_PROP_FRAME_HEIGHT)), 1);
+	//TODO 修改正常的解析来让浏览器播放视频
+	writer = VideoWriter(outputname, cv::VideoWriter::fourcc('X','V','I','D'), cap.get(CAP_PROP_FPS), Size(cap.get(CAP_PROP_FRAME_WIDTH), cap.get(CAP_PROP_FRAME_HEIGHT)), 1);
 	//cout << "Step 2 error check" << endl;
 	Mat bkgMat, frgMat, frgMask, accBkgMat, shadowMask, gradShadowMask;
 
@@ -100,8 +102,9 @@ void VideoShadowRemove()
 		// Capture frame-by-frame
 		cap >> frame;
 		// If the frame is empty, break immediately
-		if (frame.empty())
+		if (frame.empty()){
 			break;
+		}
 		// to speed up RESIZE会毁掉的
 		//resize(frame, frame, Size(config::FRAME_RESIZE_WIDTH, config::FRAME_RESIZE_HEIGHT));
 		// remove noise
@@ -131,23 +134,26 @@ void VideoShadowRemove()
 		returnVal = chromacityShadowDet.GetShadowMask(frame, bkgMat, frgMask, shadowMask);
 		if (returnVal == Status::FAILURE)
 		{
-			cout << "Chromacity Shadow detection Failed!";
-			break;
+			return "None";
+			//cout << "Chromacity Shadow detection Failed!";
+			//break;
 		}
 
 		/*cleanup shadows*/
 		returnVal = cleanupShadow.RemoveObjectBoundries(frame, frgMask, shadowMask);
 		if (returnVal == Status::FAILURE)
 		{
-			cout << "Cleanup Shadow by object boundries Failed!";
-			break;
+			return "None";
+			//cout << "Cleanup Shadow by object boundries Failed!";
+			//break;
 		}
 
 		returnVal = cleanupShadow.RemoveNoisyObjects(shadowMask);
 		if (returnVal == Status::FAILURE)
 		{
-			cout << "Cleanup boundries by noisy objects Failed!";
-			break;
+			return "None";
+			//cout << "Cleanup boundries by noisy objects Failed!";
+			//break;
 		}
 
 		/*Remove shadows*/
@@ -155,8 +161,9 @@ void VideoShadowRemove()
 		returnVal = shadowRemover.RemoveShadow(bkgMat, shadowMask, shadowRemFrame);
 		if (returnVal == Status::FAILURE)
 		{
-			cout << "Shadow removal Failed!";
-			break;
+			return "None";
+			//cout << "Shadow removal Failed!";
+			//break;
 		}
 
 		/*add metadata to output*/
@@ -206,4 +213,5 @@ void VideoShadowRemove()
 	// Closes all the frames
 	//jusr for debug it's useless
 	//destroyAllWindows();
+	return outputname;
 }
