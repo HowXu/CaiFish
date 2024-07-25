@@ -71,5 +71,6 @@
         "regex": "cpp",
         "fstream": "cpp",
         "future": "cpp"
-    }
+    },
+    "liveServer.settings.port": 5501
 }
