@@ -2,7 +2,6 @@
 #define _CLEANUPSHADOWS_H_
 
 #include<opencv2/opencv.hpp>
-#include"iostream"
 #include "ConfigParams.h"
 using namespace std;
 using namespace cv;

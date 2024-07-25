@@ -2,14 +2,32 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "cppbuild",
+			"label": "BuildDir",
+			"type": "shell",
+			"command": "${os}",
+			"windows": {
+				"command": "if (-not (Test-Path build)) {New-Item -ItemType Directory -Path build }" // Windows 检测并创建
+			},
+			"linux": {
+				"command": "if [ ! -d build ]; then mkdir build; fi" // Linux/MacOS 检测并创建
+			},
+			"options": {
+				"cwd": "${workspaceFolder}"
+			}
+		},
+		{
+			"type": "shell",
 			"label": "MakeFileBuild",
+			"options": {
+				"cwd": "./build"
+			},
 			"command": "cmake",
 			"args": [
 				"CMakeLists.txt",
-				"-G",
-				"\"MinGW Makefiles\""
+				"-G \"MinGW Makefiles\"",
+				".."
 			],
+			"dependsOn":["BuildDir"],
 			"group": {
 				"kind": "build",
 				"isDefault": false
@@ -17,26 +35,34 @@
 			"detail": "Build MakeFile"
 		},
 		{
-			"type": "cppbuild",
+			"type": "shell",
 			"label": "BuildServer",
 			"command": "make",
 			"dependsOrder": "sequence",
-			"dependsOn":["MakeFileBuild"],
-			"args": [
+			"dependsOn": [
+				"MakeFileBuild"
 			],
+			"options": {
+				"cwd": "./build"
+			},
 			"group": {
 				"kind": "build",
 				"isDefault": true
 			},
 			"detail": "Build Binary"
-		},{
+		},
+		{
 			"type": "shell",
 			"label": "Run",
-			"command": "./build/output.exe",
+			"command": "./output.exe",
 			"dependsOrder": "sequence",
-			"dependsOn":["MakeFileBuild","BuildServer"],
-			"args": [
+			"dependsOn": [
+				"MakeFileBuild",
+				"BuildServer"
 			],
+			"options": {
+				"cwd": "./build"
+			},
 			"group": {
 				"kind": "build",
 				"isDefault": false

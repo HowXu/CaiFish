@@ -81,7 +81,7 @@ string _VideoShadowRemove(string file_in)
 	outputname.append(tmp);
 	//cout << "Step 1A error check" << outputname << endl;
 	//TODO 修改正常的解析来让浏览器播放视频
-	writer = VideoWriter(outputname, cv::VideoWriter::fourcc('m','p','4','v'), cap.get(CAP_PROP_FPS), Size(cap.get(CAP_PROP_FRAME_WIDTH), cap.get(CAP_PROP_FRAME_HEIGHT)), 1);
+	writer = VideoWriter(outputname, cv::VideoWriter::fourcc('a','v','c','1'), cap.get(CAP_PROP_FPS), Size(cap.get(CAP_PROP_FRAME_WIDTH), cap.get(CAP_PROP_FRAME_HEIGHT)), 1);
 	//cout << "Step 2 error check" << endl;
 	Mat bkgMat, frgMat, frgMask, accBkgMat, shadowMask, gradShadowMask;
 

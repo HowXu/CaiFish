@@ -2,12 +2,14 @@ html,
 body {
     margin: 0;
     padding: 0;
-    height: 200vh;
+    height: 250vh; /* 这里要拉高一点才不会渲染出错*/
     overflow-x: hidden;
     font-family: Montserrat, sans-serif;
     background: url("../public/background.png");
     background-size: cover;
+    background-repeat: no-repeat;
     text-align: center;
+        /* 强制渲染对齐 */
 }
 
 .background {

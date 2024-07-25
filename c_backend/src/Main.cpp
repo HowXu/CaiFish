@@ -2,7 +2,6 @@
 #include "../include/VideoProcess.h"
 #include "../include/httplib/httplib.h"
 #include <iostream>
-#include <fstream>
 #include "../include/base64.h"
 #include "time.h"
 
@@ -17,7 +16,7 @@ void _post(const Request &req, Response &res)
     res.status = 200;
     // TODO 正确的Content
     //Warning : 用time返回的时间cuo是不适用于多线程处理场景的
-    stringstream ss;
+    std::stringstream ss;
     ss << time(NULL);
     string file_to_process_path = ss.str().append(".mp4");
     decode_form_text(req.body,file_to_process_path);
@@ -28,16 +27,16 @@ void _post(const Request &req, Response &res)
     cout << "File form process " << product_file_name << endl;
     //做完阴影去除处理后还要进行ffmpeg转码为h264格式，这里用system不纯纯浪费性能
 	//这里应该用非阻塞式来应对大流量访问
-	string result = "h264_";
-	result.append(product_file_name);
-	string shell_code = "";
-	shell_code.append("ffmpeg.exe -y -i ");
-	shell_code.append(product_file_name);
-	shell_code.append(" -vcodec h264 -strict -2 ");
-	shell_code.append(result);
-	system(shell_code.c_str());
+	//string result = "h264_";
+	//result.append(product_file_name);
+	//string shell_code = "";
+	//shell_code.append("ffmpeg.exe -y -i ");
+	//shell_code.append(product_file_name);
+	//shell_code.append(" -vcodec h264 -strict -2 ");
+	//shell_code.append(result);
+	//system(shell_code.c_str());
 
-    cout << "File to H264" << result << endl;
+    //cout << "File to H264" << result << endl;
     //string result_error = "None";
     //cout << product_file_name << endl;
     if ("None" != product_file_name )
@@ -45,7 +44,7 @@ void _post(const Request &req, Response &res)
         //返回成品文件名称
         string URI = "";
         URI.append("<URI>");
-        URI.append(result);
+        URI.append(product_file_name);
         URI.append("</URI>");
         cout << "Return XML " << URI << endl;
         res.set_content(URI.data(), "text/xml");
