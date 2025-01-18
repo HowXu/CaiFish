@@ -33,6 +33,10 @@ git submodule update
 
 在Windows 11上使用Mingw64和OpenCV库进行构建，请确保**正常安装并配置了Mingw64,OpenCV(必须带有ffmpeg支持),cmake**
 
+OpenCV编译配置例如:
+
+![](./1.png)
+
 在c_backend目录下运行：
 
 ```bash
